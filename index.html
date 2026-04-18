@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mohammed Redwan | Portfolio</title>
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23020617'/%3E%3Crect x='5' y='5' width='54' height='54' rx='13' fill='none' stroke='%2338bdf8' stroke-width='3'/%3E%3Ctext x='50%25' y='54%25' text-anchor='middle' font-family='Arial, Helvetica, sans-serif' font-size='24' font-weight='700' fill='%23e5e7eb'%3EMR%3C/text%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --panel: rgba(255, 255, 255, 0.06);
+      --panel-strong: rgba(255, 255, 255, 0.1);
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --line: rgba(255, 255, 255, 0.12);
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+      --radius: 20px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.12), transparent 30%),
+        radial-gradient(circle at top right, rgba(34, 197, 94, 0.1), transparent 25%),
+        linear-gradient(180deg, #020617, #0f172a 45%, #111827 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(14px);
+      background: rgba(2, 6, 23, 0.72);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      color: var(--muted);
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 88px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      background: rgba(56, 189, 248, 0.1);
+      color: #bae6fd;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 700px;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 20px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      transition: 0.25s ease;
+      box-shadow: var(--shadow);
+      font-weight: 600;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(34, 197, 94, 0.18));
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: var(--panel-strong);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .stat,
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .stat {
+      padding: 18px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.6rem;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .profile-card {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -60px -60px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(56, 189, 248, 0.08);
+      filter: blur(6px);
+    }
+
+    .profile-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.25), rgba(34, 197, 94, 0.25));
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      border: 1px solid var(--line);
+    }
+
+    .profile-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 4px;
+    }
+
+    .profile-card .role {
+      color: var(--accent);
+      margin-bottom: 2px;
+      font-weight: 600;
+    }
+
+    .profile-card .location {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .contact-list li {
+      color: var(--muted);
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.03);
+      word-break: break-word;
+    }
+
+    section {
+      padding: 26px 0 34px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: 1.9rem;
+    }
+
+    .section-head p {
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .about-grid,
+    .skills-grid,
+    .cert-grid,
+    .links-grid,
+    .projects-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1.3fr 1fr;
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 18px;
+      border-left: 2px solid rgba(56, 189, 248, 0.25);
+    }
+
+    .timeline-item h4 {
+      margin-bottom: 4px;
+      font-size: 1.05rem;
+    }
+
+    .timeline-item .meta {
+      color: var(--accent);
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font-size: 0.92rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .skills-grid ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .skills-grid li::before {
+      content: "• ";
+      color: var(--accent);
+    }
+
+    .projects-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .search,
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 12px 14px;
+      outline: none;
+    }
+
+    .search {
+      flex: 1 1 260px;
+      min-width: 220px;
+    }
+
+    .filter-btn {
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: rgba(56, 189, 248, 0.28);
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .project-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      flex-shrink: 0;
+      box-shadow: var(--shadow);
+    }
+
+    .project-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .project-top>div {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .project-tag {
+      font-size: 0.82rem;
+      color: #bbf7d0;
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      background: rgba(34, 197, 94, 0.1);
+      padding: 6px 10px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .project-card h3 {
+      margin-bottom: 6px;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .project-actions a {
+      font-size: 0.92rem;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.04);
+      transition: 0.25s ease;
+    }
+
+    .project-actions a:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .cert-grid,
+    .links-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .certificate-slider {
+      margin-top: 18px;
+    }
+
+    .certificate-slider-controls {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .slider-btn {
+      width: 46px;
+      height: 46px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: 0.25s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .slider-btn:hover {
+      background: rgba(56, 189, 248, 0.14);
+      border-color: rgba(56, 189, 248, 0.28);
+      transform: translateY(-2px);
+    }
+
+    .certificate-gallery {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(300px, 32%);
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(56, 189, 248, 0.45) rgba(255, 255, 255, 0.06);
+    }
+
+    .certificate-gallery::-webkit-scrollbar {
+      height: 10px;
+    }
+
+    .certificate-gallery::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 999px;
+    }
+
+    .certificate-gallery::-webkit-scrollbar-thumb {
+      background: rgba(56, 189, 248, 0.45);
+      border-radius: 999px;
+    }
+
+    .certificate-photo {
+      overflow: hidden;
+      padding: 0;
+      min-height: 100%;
+    }
+
+    .certificate-photo img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .certificate-photo .photo-caption {
+      padding: 16px 18px 18px;
+    }
+
+    .certificate-photo h3 {
+      margin-bottom: 0;
+      font-size: 1rem;
+    }
+
+    .link-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .link-box small {
+      color: var(--muted);
+    }
+
+    .footer {
+      padding: 36px 0 50px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+
+      .hero-grid,
+      .about-grid,
+      .skills-grid,
+      .projects-grid,
+      .cert-grid,
+      .links-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .certificate-gallery {
+        grid-auto-columns: minmax(280px, 85%);
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding-top: 64px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">Mohammed <span>Redwan</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#certificates">Certificates</a>
+        <a href="#links">Links</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="home">
+    <div class="container hero-grid">
+      <div class="reveal visible">
+        <div class="badge">Game Developer • Computer Science Student • Backend Learner</div>
+        <h1>Building games and digital experiences with code creativity and curiosity</h1>
+        <p>
+          I am Mohammed Redwan, a Computer Science student from Gaza, Palestine, focused on game development with Unity
+          and C#, while also growing my backend skills with Django and Flask. I enjoy building interactive projects,
+          learning fast, and turning ideas into polished experiences.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn" href="#contact">Contact Me</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>5+</strong>
+            <span>Game Projects</span>
+          </div>
+          <div class="stat">
+            <strong>7+</strong>
+            <span>Certificates</span>
+          </div>
+          <div class="stat">
+            <strong>2023</strong>
+            <span>Started CS Journey</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card profile-card reveal visible">
+        <div class="profile-top">
+          <div class="avatar">MR</div>
+          <div>
+            <h3>Mohammed Redwan</h3>
+            <div class="role">Game Development Intern</div>
+            <div class="location">Gaza, Palestine</div>
+          </div>
+        </div>
+        <p>
+          Passionate about gameplay systems, problem solving, and building clean technical solutions in games and web
+          backends.
+        </p>
+        <ul class="contact-list">
+          <li><strong>Email:</strong> <a href="mailto:mohammed.redwan.pro@gmail.com">mohammed.redwan.pro@gmail.com</a>
+          </li>
+          <li><strong>Phone:</strong> +972 597 524 685</li>
+          <li><strong>Focus:</strong> Unity, C#, Python, Django, Flask</li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>About Me</h2>
+          </div>
+          <p>I combine technical learning with hands-on project work in game development, software engineering, and
+            backend development.</p>
+        </div>
+        <div class="about-grid">
+          <div class="card reveal">
+            <h3>Professional Summary</h3>
+            <p>
+              A passionate Computer Science student and aspiring game developer with experience in Unity, C#, game
+              mechanics, and interactive systems. I have worked on multiple game projects, participated in game jams,
+              and completed technical courses in software engineering, Linux, and problem solving. I am also expanding
+              into backend development using Django and Flask.
+            </p>
+          </div>
+          <div class="card reveal">
+            <h3>Highlights</h3>
+            <div class="chips">
+              <span class="chip">Unity Game Development</span>
+              <span class="chip">C# Programming</span>
+              <span class="chip">Python</span>
+              <span class="chip">Django</span>
+              <span class="chip">Flask</span>
+              <span class="chip">GitHub</span>
+              <span class="chip">Game Design</span>
+              <span class="chip">Problem Solving</span>
+              <span class="chip">Blender</span>
+              <span class="chip">MySQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Education and Experience</h2>
+          </div>
+          <p>My academic path and practical work in game development.</p>
+        </div>
+        <div class="about-grid">
+          <div class="card reveal">
+            <h3>Education</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <h4>Bachelor in Computer Science</h4>
+                <div class="meta">Islamic University of Gaza • 2023 to Present</div>
+                <p>Focused on programming, algorithms, problem solving, and software development fundamentals.</p>
+              </div>
+              <div class="timeline-item">
+                <h4>High School Scientific Stream</h4>
+                <div class="meta">Abu Ther Al-Ghafari School • 2023</div>
+                <p>Graduated with an average of 94.3%.</p>
+              </div>
+            </div>
+          </div>
+          <div class="card reveal">
+            <h3>Experience</h3>
+            <div class="timeline">
+              <div class="timeline-item">
+                <h4>Game Development Intern</h4>
+                <div class="meta">Online Internship</div>
+                <p>working as game developer for <b>Palestine Skating Game</b> on gameplay mechanics, systems design,
+                  and improving the player experience using Unity and C#.
+                </p>
+              </div>
+              <!-- <div class="timeline-item">
+                <h4>Game Developer</h4>
+                <div class="meta">Palestine Skating Game • 1K to 3K downloads</div>
+                <p>Contributed to gameplay features and development of a local game project aimed at delivering a fun
+                  player experience.</p>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Skills</h2>
+          </div>
+          <p>A balanced mix of programming, game development, and backend skills.</p>
+        </div>
+        <div class="skills-grid">
+          <div class="card reveal">
+            <h3>Programming</h3>
+            <ul>
+              <li>C#</li>
+              <li>Python</li>
+              <li>Java</li>
+              <li>Object Oriented Programming</li>
+              <li>Data Structures</li>
+              <li>Problem Solving</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <h3>Game Development</h3>
+            <ul>
+              <li>Unity</li>
+              <li>Game Mechanics</li>
+              <li>Game Design and Prototyping</li>
+              <li>Physics Based Systems</li>
+              <li>Blender 3D Modeling</li>
+              <li>Game Jam Experience</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <h3>Backend and Tools</h3>
+            <ul>
+              <li>Django</li>
+              <li>Flask</li>
+              <li>MySQL</li>
+              <li>Git and GitHub</li>
+              <li>Linux and Shell</li>
+              <li>Software Engineering</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Projects</h2>
+          </div>
+          <p>Browse my game projects and filter them instantly.</p>
+        </div>
+
+        <div class="projects-controls reveal">
+          <input id="projectSearch" class="search" type="text" placeholder="Search projects by name or type" />
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="published">Published</button>
+          <button class="filter-btn" data-filter="development">In Development</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <article class="card project-card reveal" data-category="published"
+            data-search="try to reach arcade unity game published">
+            <div class="project-top">
+              <div>
+                <img class="project-icon" src="Game%20Icons/Try%20To%20Reach.png" alt="Try to Reach icon" />
+                <h3>Try to Reach</h3>
+                <p>An interactive game project published on itch.io showcasing gameplay mechanics and player
+                  progression.</p>
+              </div>
+              <span class="project-tag">Published</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://mohammed-redwan94.itch.io/try-to-reach" target="_blank">Open on itch.io</a>
+            </div>
+          </article>
+
+          <article class="card project-card reveal" data-category="published"
+            data-search="ballyee unity game published">
+            <div class="project-top">
+              <div>
+                <img class="project-icon" src="Game%20Icons/Ballyee.png" alt="Ballyee icon" />
+                <h3>Ballyee</h3>
+                <p>A game project focused on creative gameplay ideas and practical implementation using Unity.</p>
+              </div>
+              <span class="project-tag">Published</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://mohammed-redwan94.itch.io/ballyee" target="_blank">Open on itch.io</a>
+            </div>
+          </article>
+
+          <article class="card project-card reveal" data-category="published"
+            data-search="slice time unity game published">
+            <div class="project-top">
+              <div>
+                <img class="project-icon" src="Game%20Icons/Slice%20Time.png" alt="Slice Time icon" />
+                <h3>Slice Time</h3>
+                <p>A Unity project demonstrating timing based gameplay and responsive mechanics.</p>
+              </div>
+              <span class="project-tag">Published</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://mohammed-redwan94.itch.io/slice-time" target="_blank">Open on itch.io</a>
+            </div>
+          </article>
+
+          <article class="card project-card reveal" data-category="published"
+            data-search="heads jumper platformer unity published">
+            <div class="project-top">
+              <div>
+                <img class="project-icon" src="Game%20Icons/Heads%20Jumper.png" alt="Heads Jumper icon" />
+                <h3>Heads Jumper</h3>
+                <p>A gameplay experiment built around motion, challenge, and fun interaction loops.</p>
+              </div>
+              <span class="project-tag">Published</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://mohammed-redwan94.itch.io/heads-jumper" target="_blank">Open on itch.io</a>
+            </div>
+          </article>
+
+          <article class="card project-card reveal" data-category="published" data-search="sin go unity game published">
+            <div class="project-top">
+              <div>
+                <img class="project-icon" src="Game%20Icons/Sin%20go.png" alt="Sin Go icon" />
+                <h3>Sin Go</h3>
+                <p>A published game that reflects creativity, iteration, and hands on development experience.</p>
+              </div>
+              <span class="project-tag">Published</span>
+            </div>
+            <div class="project-actions">
+              <a href="https://mohammed-redwan94.itch.io/sin-go" target="_blank">Open on itch.io</a>
+            </div>
+          </article>
+
+          <article class="card project-card reveal" data-category="development"
+            data-search="fifth under development unity game">
+            <div class="project-top">
+              <div>
+                <h3>Fifth</h3>
+                <p>A current project under development with a focus on improving design and technical depth.</p>
+              </div>
+              <span class="project-tag">In Development</span>
+            </div>
+            <div class="project-actions">
+              <a href="#contact">Ask Me About It</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="certificates">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Certificates and Courses</h2>
+          </div>
+          <p>Training that strengthened my practical and technical foundations.</p>
+        </div>
+        <div class="cert-grid">
+          <div class="card reveal">
+            <h3>Game Development with Unity</h3>
+            <p>GSG • 2024 • Online</p>
+          </div>
+          <div class="card reveal">
+            <h3>3D Modeling with Blender</h3>
+            <p>Qotpot • 2025 • Online</p>
+          </div>
+          <div class="card reveal">
+            <h3>Problem Solving</h3>
+            <p>GSG • 2025 • Online</p>
+          </div>
+          <div class="card reveal">
+            <h3>Software Engineering</h3>
+            <p>IBM • 2025 • Online</p>
+          </div>
+          <div class="card reveal">
+            <h3>Linux and Shell Scripting</h3>
+            <p>IBM • 2025 • Online</p>
+          </div>
+          <div class="card reveal">
+            <h3>Game Jam Participation</h3>
+            <p>GSG Volume 2 and GitHub Game Off 2025</p>
+          </div>
+        </div>
+        <div class="certificate-slider reveal">
+          <div class="certificate-slider-controls">
+            <button class="slider-btn" type="button" id="certPrev"
+              aria-label="Show previous certificates">&#8592;</button>
+            <button class="slider-btn" type="button" id="certNext" aria-label="Show next certificates">&#8594;</button>
+          </div>
+          <div class="certificate-gallery" id="certificateGallery">
+            <article class="card certificate-photo">
+              <img src="Certificate/Game%20development.png" alt="Game development certificate" />
+              <div class="photo-caption">
+                <h3>Game Development</h3>
+              </div>
+            </article>
+            <article class="card certificate-photo">
+              <img src="Certificate/game%20development%20bootcamp.png" alt="Game development bootcamp certificate" />
+              <div class="photo-caption">
+                <h3>Game Development Bootcamp</h3>
+              </div>
+            </article>
+            <article class="card certificate-photo">
+              <img src="Certificate/Software%20Engineer.png" alt="Software Engineer certificate" />
+              <div class="photo-caption">
+                <h3>Software Engineering</h3>
+              </div>
+            </article>
+            <article class="card certificate-photo">
+              <img src="Certificate/Problem%20Solving.png" alt="Problem solving certificate" />
+              <div class="photo-caption">
+                <h3>Problem Solving</h3>
+              </div>
+            </article>
+            <article class="card certificate-photo">
+              <img src="Certificate/Git%20and%20Github.png" alt="Git and GitHub certificate" />
+              <div class="photo-caption">
+                <h3>Git and GitHub</h3>
+              </div>
+            </article>
+            <!-- <article class="card certificate-photo">
+              <img src="Certificate/git-and-github-essentials.1.png" alt="Git and GitHub essentials certificate" />
+              <div class="photo-caption">
+                <h3>GitHub Essentials</h3>
+              </div>
+            </article> -->
+            <article class="card certificate-photo">
+              <img src="Certificate/linux%20certificate.png" alt="Linux certificate" />
+              <div class="photo-caption">
+                <h3>Linux Certificate</h3>
+              </div>
+            </article>
+            <article class="card certificate-photo">
+              <img src="Certificate/Game%20Jam.png" alt="Game Jam certificate" />
+              <div class="photo-caption">
+                <h3>Game Jam</h3>
+              </div>
+            </article>
+            <article class="card certificate-photo">
+              <img src="Certificate/blender%201.png" alt="Blender certificate photo 1" />
+              <div class="photo-caption">
+                <h3>Blender Certificate 1</h3>
+              </div>
+            </article>
+            <article class="card certificate-photo">
+              <img src="Certificate/blender%202.png" alt="Blender certificate photo 2" />
+              <div class="photo-caption">
+                <h3>Blender Certificate 2</h3>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="links">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Platforms and Links</h2>
+          </div>
+          <p>Your visitors can use these links to explore your work, code, and professional profiles.</p>
+        </div>
+        <div class="links-grid">
+          <a class="card link-box reveal" href="https://github.com/Mohammed-Redwan/" target="_blank" rel="noreferrer">
+            <h3>GitHub</h3>
+            <small>github.com/Mohammed-Redwan</small>
+            <p>Show repositories, code samples, and technical projects.</p>
+          </a>
+          <a class="card link-box reveal" href="https://www.linkedin.com/in/mohammed-redwan94" target="_blank"
+            rel="noreferrer">
+            <h3>LinkedIn</h3>
+            <small>linkedin.com/in/mohammed-redwan94</small>
+            <p>Present your professional story, experience, and network.</p>
+          </a>
+          <a class="card link-box reveal" href="https://mohammed-redwan94.itch.io/" target="_blank" rel="noreferrer">
+            <h3>itch.io</h3>
+            <small>mohammed-redwan94.itch.io</small>
+            <p>Publish and showcase your playable game projects in one place.</p>
+          </a>
+          <a class="card link-box reveal" href="mailto:mohammed.redwan.pro@gmail.com">
+            <h3>Email</h3>
+            <small>mohammed.redwan.pro@gmail.com</small>
+            <p>Send a direct message for internships, freelance work, or collaboration.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <div>
+            <h2>Contact</h2>
+          </div>
+          <p>Interested in collaboration, internships, or game development opportunities.</p>
+        </div>
+        <div class="about-grid">
+          <div class="card reveal">
+            <h3>Get in Touch</h3>
+            <p>If you would like to discuss a project, internship, freelance opportunity, or collaboration, feel free to
+              reach out.</p>
+            <ul class="contact-list">
+              <li><strong>Email:</strong> <a
+                  href="mailto:mohammed.redwan.pro@gmail.com">mohammed.redwan.pro@gmail.com</a></li>
+              <li><strong>Phone:</strong> +972 597 524 685</li>
+              <li><strong>Location:</strong> Gaza, Palestine</li>
+              <li><strong>Language:</strong> Arabic and English</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <h3>Portfolio Goals</h3>
+            <p>
+              This site is designed to present your skills, projects, certificates, and public profiles in a modern and
+              professional way. You can keep improving it by adding screenshots, live demos, downloadable certificates,
+              and your real GitHub and LinkedIn links.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 Mohammed Redwan</p>
+    </div>
+  </footer>
+
+  <script>
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section, header.hero');
+    const revealItems = document.querySelectorAll('.reveal');
+    const searchInput = document.getElementById('projectSearch');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+    const certificateGallery = document.getElementById('certificateGallery');
+    const certPrev = document.getElementById('certPrev');
+    const certNext = document.getElementById('certNext');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => observer.observe(item));
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => link.classList.remove('active'));
+          const id = entry.target.getAttribute('id');
+          const activeLink = document.querySelector(`.nav-links a[href="#${id}"]`);
+          if (activeLink) activeLink.classList.add('active');
+        }
+      });
+    }, { threshold: 0.35 });
+
+    sections.forEach((section) => sectionObserver.observe(section));
+
+    let currentFilter = 'all';
+
+    function filterProjects() {
+      const query = (searchInput.value || '').toLowerCase().trim();
+
+      projectCards.forEach((card) => {
+        const category = card.dataset.category;
+        const searchText = card.dataset.search;
+        const matchesFilter = currentFilter === 'all' || category === currentFilter;
+        const matchesSearch = searchText.includes(query);
+        card.style.display = matchesFilter && matchesSearch ? 'flex' : 'none';
+      });
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', filterProjects);
+    }
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach((btn) => btn.classList.remove('active'));
+        button.classList.add('active');
+        currentFilter = button.dataset.filter;
+        filterProjects();
+      });
+    });
+
+    function scrollCertificates(direction) {
+      if (!certificateGallery) return;
+      const firstCard = certificateGallery.querySelector('.certificate-photo');
+      const scrollAmount = firstCard ? firstCard.getBoundingClientRect().width + 18 : 320;
+      certificateGallery.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    if (certPrev) {
+      certPrev.addEventListener('click', () => scrollCertificates(-1));
+    }
+
+    if (certNext) {
+      certNext.addEventListener('click', () => scrollCertificates(1));
+    }
+  </script>
+</body>
+
+</html>
